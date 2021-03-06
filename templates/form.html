@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}story form {% endblock%}
+{% block select %}
+<form action="" id="story_type">
+    <select name="story_form" id="story_form" >
+        {% if story_type == "story2" %}
+        <option value="story1">Story_1</option>
+        <option value="story2" selected >Story_2</option>
+        {% else %}
+        <option value="story1" selected>Story_1</option>
+        <option value="story2">Story_2</option>
+        {% endif %}
+    </select>
+    <input type="submit">
+</form>
+{% endblock%}
+{% block content %}
+    <h1>Madlibs</h1>
+    <form action="/my_story/{{story_type}}">
+        {% for title in story %}
+        <label for="">{{title}}</label><input type="text" placeholder="{{title}}" name="{{title}}" /><br>
+        {% endfor %}
+        <input type="submit">
+    </form>
+{% endblock %}
